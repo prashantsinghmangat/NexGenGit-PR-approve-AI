@@ -1,0 +1,34 @@
+- .env.local
+- .gitignore
+- README.md
+- app
+  - favicon.ico
+  - globals.css
+  - layout.tsx
+- components
+  - LoginButton.tsx
+- eslint.config.mjs
+- next-env.d.ts
+- next.config.js
+- package-lock.json
+- package.json
+- pages
+  - _app.tsx
+  - api
+    - auth
+      - [...nextauth].ts
+    - installation
+      - callback.ts
+    - webhook.ts
+  - dashboard.tsx
+  - index.tsx
+  - install.tsx
+- postcss.config.mjs
+- project_structure.text
+- public
+  - file.svg
+  - globe.svg
+  - next.svg
+  - vercel.svg
+  - window.svg
+- tsconfig.json

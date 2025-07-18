@@ -1,0 +1,38 @@
+{
+  "name": "nexgengit",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@octokit/auth-app": "latest",
+    "@octokit/auth-oauth-user": "^5.1.6",
+    "@octokit/core": "latest",
+    "@octokit/oauth-app": "^7.1.6",
+    "@octokit/webhooks": "latest",
+    "axios": "latest",
+    "crypto-js": "^4.2.0",
+    "next": "latest",
+    "next-auth": "^4.24.11",
+    "octokit": "^4.1.4",
+    "react": "latest",
+    "react-dom": "latest",
+    "together-ai": "^0.16.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/next-auth": "^3.13.0",
+    "@types/node": "^20.19.1",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.4",
+    "tailwindcss": "^4",
+    "typescript": "^5.8.3"
+  }
+}
