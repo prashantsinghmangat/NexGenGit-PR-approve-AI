@@ -61,6 +61,150 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+An AI-powered GitHub App to automatically review Pull Requests and comment feedback using AI.
+Built with Next.js, NextAuth, Prisma, TailwindCSS, and Octokit.
+
+🚀 Key Features
+🔒 OAuth Login — Secure GitHub sign-in using NextAuth.
+
+⚙️ GitHub App Integration — Repo-scoped app with PR event webhooks.
+
+🤖 Automated AI PR Reviews — Uses AI to analyze PRs and comment back.
+
+📊 User Dashboard — See connected repos, manage installations.
+
+🔗 Secure Webhooks — Verifies PR events with HMAC signatures.
+
+🧩 Modern Stack — TypeScript, Prisma ORM, TailwindCSS.
+
+🗂️ App Structure
+Path	Description
+pages/api/auth/[...nextauth].ts	GitHub OAuth with NextAuth
+pages/api/github/install.ts	Handles GitHub App install redirects
+pages/api/github/webhook.ts	Receives PR webhook events
+lib/aiReview.ts	Central AI PR review logic
+lib/githubApp.ts	GitHub App auth & Octokit setup
+lib/githubOAuth.ts	User access token handling
+components/	UI components
+pages/dashboard/	User repo dashboard & PR views
+prisma/schema.prisma	Database schema for users, repos, installs
+lib/prisma.ts	Prisma client
+utils/constants.ts	Centralized config
+utils/jwt.ts	GitHub App JWT generation
+utils/verifyWebhook.ts	Webhook HMAC signature verification
+public/	Static assets
+styles/	Tailwind CSS config & custom styles
+
+🔄 How It Works
+plaintext
+Copy
+Edit
+                ┌────────────────────┐
+                │   User logs in     │
+                │  via GitHub OAuth  │
+                └────────┬───────────┘
+                         │
+               Gets user access token
+                         │
+                         ▼
+              ┌──────────────────────┐
+              │  User Dashboard      │
+              │ - See their repos    │
+              │ - See installation   │
+              └────────┬─────────────┘
+                       │
+         If GitHub App not installed
+                       ▼
+           ┌────────────────────────┐
+           │ Prompt to install App  │
+           └────────┬───────────────┘
+                    │
+        Redirects to GitHub install page
+                    │
+                    ▼
+      ┌───────────────────────────────┐
+      │ GitHub App (repo-scoped)     │
+      │ - Gets webhook PR events     │
+      │ - Reviews PRs with AI        │
+      │ - Comments back to GitHub    │
+      └──────────────────────────────┘
+⚙️ Setup
+1️⃣ Clone & Install
+bash
+Copy
+Edit
+git clone https://github.com/your-username/git-ai-pr-approver.git
+cd git-ai-pr-approver
+npm install
+2️⃣ Environment Variables
+Create a .env file:
+
+env
+Copy
+Edit
+DATABASE_URL=postgresql://...
+GITHUB_CLIENT_ID=your_github_oauth_client_id
+GITHUB_CLIENT_SECRET=your_github_oauth_client_secret
+
+GITHUB_APP_ID=your_github_app_id
+GITHUB_APP_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n..."
+GITHUB_WEBHOOK_SECRET=your_webhook_secret
+
+NEXTAUTH_SECRET=some_random_string
+NEXTAUTH_URL=http://localhost:3000
+3️⃣ Run Prisma Migrations
+bash
+Copy
+Edit
+npx prisma migrate dev
+4️⃣ Run the Dev Server
+bash
+Copy
+Edit
+npm run dev
+✅ Usage
+Login: Go to /login and sign in with GitHub.
+
+Install App: If not installed, follow the prompt to install your GitHub App on selected repos.
+
+Dashboard: View your repositories.
+
+PR Event: When a new PR is opened, the GitHub App receives a webhook → triggers AI → posts comments automatically.
+
+🔐 Security
+All webhooks verified with HMAC signatures.
+
+GitHub App JWTs signed per request.
+
+OAuth tokens stored securely.
+
+Prisma ORM for safe DB access.
+
+📚 Tech Stack
+Next.js + NextAuth — React app + GitHub OAuth
+
+Prisma — PostgreSQL ORM
+
+TailwindCSS — Styling
+
+Octokit — GitHub REST API
+
+OpenAI API (or other) — AI review engine
+
+🧩 Future Improvements
+More advanced AI suggestions.
+
+Automated approval/merge on pass.
+
+PR status checks.
+
+Slack / email notifications.
+
+⚖️ License
+MIT — free to use and modify.
+
+
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
